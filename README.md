@@ -15,11 +15,8 @@
 
 ## 💬 About Me
 
-- ☯ 来自中国 · 西安
-- 🎓 西北工业大学 · 数学与统计学院 · 信息与计算科学
-- 🧪 省级大创负责人（夜光遥感图像全色锐化）
-- 📄 IEEE Transactions on Image Processing 在投论文 · 第一作者
-- 🔬 兴趣方向：深度学习 · 遥感图像融合 · 类脑智能
+- ☯ From China
+- 📖 Deep Learning / Remote Sensing Image Fusion / Brain-inspired Intelligence
 
 ## 🧰 Languages & Tools
 
@@ -32,10 +29,6 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
-
-## 📊 Profile Views
-
-![views](https://komarev.com/ghpvc/?username=22ABLE22&style=buefy&color=52adc8)
 
 ---
 
