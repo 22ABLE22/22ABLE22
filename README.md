@@ -1,0 +1,48 @@
+# Hi 👋，我是 Runhe Cao（曹润禾）
+
+欢迎访问我的 GitHub 主页。
+
+- 如何联系我:
+  - 📧 crh1102@163.com
+  - 🔗 [@22ABLE22](https://github.com/22ABLE22)
+
+## 🌟 My GitHub
+
+<div align="center">
+  <img src="https://github-stats-extended.vercel.app/api?username=22ABLE22&show_icons=true&theme=buefy&hide_border=true&count_private=true" alt="My GitHub Stats" />
+  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=22ABLE22&layout=compact&theme=buefy&hide_border=true" alt="Most Used Languages" />
+</div>
+
+## 💬 About Me
+
+- ☯ 来自中国 · 西安
+- 🎓 西北工业大学 · 数学与统计学院 · 信息与计算科学
+- 🧪 省级大创负责人（夜光遥感图像全色锐化）
+- 📄 IEEE Transactions on Image Processing 在投论文 · 第一作者
+- 🔬 兴趣方向：深度学习 · 遥感图像融合 · 类脑智能
+
+## 🧰 Languages & Tools
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white)
+![MATLAB](https://img.shields.io/badge/MATLAB-orange?style=flat&logo=mathworks&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
+![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat&logo=latex&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
+
+## 📊 Profile Views
+
+![views](https://komarev.com/ghpvc/?username=22ABLE22&style=buefy&color=52adc8)
+
+---
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg" width="100%">
+  </picture>
+</p>
