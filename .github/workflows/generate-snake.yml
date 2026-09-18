@@ -18,10 +18,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Prefer SNAKE_PAT (classic PAT with read:user) so private contributions
+      # are included in the contribution calendar when profile settings allow it.
       - name: Generate snake
         uses: Platane/snk@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT || github.token }}
         with:
           github_user_name: 22ABLE22
+          github_token: ${{ secrets.SNAKE_PAT || github.token }}
           outputs: |
             assets/github-contribution-grid-snake.svg
             assets/github-contribution-grid-snake-dark.svg?palette=github-dark
