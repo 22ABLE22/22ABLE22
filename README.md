@@ -9,8 +9,8 @@
 ## 🌟 My GitHub
 
 <div align="center">
-  <img src="./assets/stats-token.svg" alt="GitHub Stats (includes private languages via Actions)" />
-  <img src="./assets/top-langs.svg" alt="Most Used Languages" />
+  <img height="165" src="./assets/stats-token.svg" alt="22ABLE22's GitHub Stats" />
+  <img height="165" src="./assets/top-langs.svg" alt="Most Used Languages" />
 </div>
 
 ## 💬 About Me

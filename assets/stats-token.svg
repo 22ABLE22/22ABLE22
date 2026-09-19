@@ -1,24 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220" viewBox="0 0 420 220">
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="195" viewBox="0 0 450 195">
 <style>
-      .card{fill:#010409;stroke:#30363d}
-      .title{fill:#e6edf3;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
-      .label{fill:#8b949e;font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
-      .val{fill:#52adc8;font:700 14px ui-monospace,SFMono-Regular,Menlo,monospace}
-      .sub{fill:#8b949e;font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
-    </style>
-<rect class="card" x="1" y="1" width="418" height="218" rx="8"/>
-<text class="title" x="18" y="26">GitHub Stats (token-visible)</text>
-<text class="label" x="18" y="56">Public + private repos</text>
-<text class="val" x="402" y="56" text-anchor="end">11</text>
-<text class="label" x="18" y="80">Total stars</text>
-<text class="val" x="402" y="80" text-anchor="end">10</text>
-<text class="label" x="18" y="104">Total forks</text>
-<text class="val" x="402" y="104" text-anchor="end">0</text>
-<text class="label" x="18" y="128">Total issues (authored)</text>
-<text class="val" x="402" y="128" text-anchor="end">0</text>
-<text class="label" x="18" y="152">Total PRs (authored)</text>
-<text class="val" x="402" y="152" text-anchor="end">5</text>
-<text class="label" x="18" y="176">Languages repos used</text>
-<text class="val" x="402" y="176" text-anchor="end">11</text>
-<text class="sub" x="18" y="206">Counts include repos this token can access</text>
+    .t{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
+    .l{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
+    .v{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
+    .m{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#6b7c85}
+  </style>
+<rect x="0.5" y="0.5" width="449" height="194" rx="8" fill="#ffffff" stroke="#e6ebef"/>
+<text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>
+<circle cx="392" cy="28" r="22" fill="#f3faf7" stroke="#42b983" stroke-width="2"/>
+<text x="392" y="28" text-anchor="middle" dominant-baseline="central" style="font:700 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#42b983">S+</text>
+<text class="m" x="392" y="58" text-anchor="middle">Rank</text>
+<line x1="24" y1="48" x2="426" y2="48" stroke="#e6ebef"/>
+<text class="l" x="28" y="72">🔥 Total Stars:</text>
+<text class="v" x="193" y="72">10</text>
+<text class="l" x="28" y="100">📦 Total Repos:</text>
+<text class="v" x="193" y="100">11</text>
+<text class="l" x="28" y="128">📥 Total Forks:</text>
+<text class="v" x="193" y="128">0</text>
+<text class="l" x="240" y="72">❗ Total Issues:</text>
+<text class="v" x="405" y="72">0</text>
+<text class="l" x="240" y="100">🔃 Pull Requests:</text>
+<text class="v" x="405" y="100">5</text>
+<text class="l" x="240" y="128">🧮 Commits (1y):</text>
+<text class="v" x="405" y="128">156</text>
+<text class="m" x="24" y="179">Includes private repositories visible to STATS_PAT</text>
 </svg>
