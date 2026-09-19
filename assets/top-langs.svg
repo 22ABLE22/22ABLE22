@@ -7,15 +7,15 @@
 <rect x="0.5" y="0.5" width="349" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="20" y="28">Most Used Languages</text>
 <circle cx="72" cy="108" r="44" fill="none" stroke="#dfe7ee" stroke-width="16"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#3572A5" stroke-width="16" stroke-dasharray="107.41010154741352 169.05005196848825" stroke-dashoffset="0" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#DA5B0B" stroke-width="16" stroke-dasharray="88.22596172245841 188.23419179344336" stroke-dashoffset="-107.41010154741352" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#355570" stroke-width="16" stroke-dasharray="37.59820338847176 238.86195012743002" stroke-dashoffset="-195.63606326987193" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#e34c26" stroke-width="16" stroke-dasharray="17.324966991222333 259.13518652467945" stroke-dashoffset="-233.2342666583437" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#f1e05a" stroke-width="16" stroke-dasharray="13.684452621213227 262.77570089468855" stroke-dashoffset="-250.55923364956604" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#3178c6" stroke-width="16" stroke-dasharray="8.547902917810323 267.9122505980914" stroke-dashoffset="-264.2436862707793" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#3572A5" stroke-width="16" stroke-dasharray="107.3892828723291 169.07087064357268" stroke-dashoffset="0" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#DA5B0B" stroke-width="16" stroke-dasharray="88.20886139758535 188.25129211831643" stroke-dashoffset="-107.3892828723291" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#355570" stroke-width="16" stroke-dasharray="37.59091594745061 238.86923756845115" stroke-dashoffset="-195.59814426991446" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#e34c26" stroke-width="16" stroke-dasharray="17.321608993664917 259.1385445222368" stroke-dashoffset="-233.18906021736507" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#f1e05a" stroke-width="16" stroke-dasharray="13.735384906521514 262.72476860938025" stroke-dashoffset="-250.51066921102998" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#3178c6" stroke-width="16" stroke-dasharray="8.546246127518392 267.9139073883834" stroke-dashoffset="-264.24605411755147" transform="rotate(-90 72 108)"/>
 <rect x="140" y="54" width="10" height="10" rx="2" fill="#3572A5"/>
 <text class="l" x="156" y="62">Python</text>
-<text class="p" x="334" y="62" text-anchor="end">38.85%</text>
+<text class="p" x="334" y="62" text-anchor="end">38.84%</text>
 <rect x="140" y="74" width="10" height="10" rx="2" fill="#DA5B0B"/>
 <text class="l" x="156" y="82">Jupyter Notebook</text>
 <text class="p" x="334" y="82" text-anchor="end">31.91%</text>
@@ -27,7 +27,7 @@
 <text class="p" x="334" y="122" text-anchor="end">6.27%</text>
 <rect x="140" y="134" width="10" height="10" rx="2" fill="#f1e05a"/>
 <text class="l" x="156" y="142">JavaScript</text>
-<text class="p" x="334" y="142" text-anchor="end">4.95%</text>
+<text class="p" x="334" y="142" text-anchor="end">4.97%</text>
 <rect x="140" y="154" width="10" height="10" rx="2" fill="#3178c6"/>
 <text class="l" x="156" y="162">TypeScript</text>
 <text class="p" x="334" y="162" text-anchor="end">3.09%</text>

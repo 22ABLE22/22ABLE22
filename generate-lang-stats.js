@@ -210,11 +210,6 @@ function renderRankSvg(rank, percentile) {
   parts.push(
     `<text class="r" x="${cx}" y="${cy + 2}" text-anchor="middle" dominant-baseline="central">${esc(rank)}</text>`,
   );
-  const p = Number.isFinite(percentile) ? percentile.toFixed(0) : "";
-  parts.push(`<text class="m" x="${cx}" y="${height - 28}" text-anchor="middle">github-readme-stats</text>`);
-  if (p) {
-    parts.push(`<text class="m" x="${cx}" y="${height - 14}" text-anchor="middle">pct ${p}</text>`);
-  }
   parts.push(`</svg>`);
   return parts.join("\n");
 }
