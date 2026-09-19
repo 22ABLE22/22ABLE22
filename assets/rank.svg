@@ -8,6 +8,6 @@
 <text class="t" x="65" y="28" text-anchor="middle">Rank</text>
 <circle cx="65" cy="88" r="42" fill="#f3faf7" stroke="#42b983" stroke-width="3"/>
 <circle cx="65" cy="88" r="50" fill="none" stroke="#42b983" stroke-width="1" opacity="0.25"/>
-<text class="r" x="65" y="90" text-anchor="middle" dominant-baseline="central">S+</text>
+<text class="r" x="65" y="90" text-anchor="middle" dominant-baseline="central">A</text>
 <text class="m" x="65" y="157" text-anchor="middle">GitHub Stats</text>
 </svg>
