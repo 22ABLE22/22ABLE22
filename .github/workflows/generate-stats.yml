@@ -1,0 +1,42 @@
+name: Generate profile stats SVG
+
+on:
+  schedule:
+    - cron: "23 16 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "generate-lang-stats.js"
+      - ".github/workflows/generate-stats.yml"
+      - "README.md"
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # STATS_PAT must be able to READ private repository metadata/languages.
+      - name: Generate language & stats SVG
+        env:
+          GITHUB_TOKEN: ${{ secrets.STATS_PAT || secrets.SNAKE_PAT || github.token }}
+        run: node generate-lang-stats.js
+
+      - name: Commit SVG cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/top-langs.svg assets/stats-token.svg
+          git diff --staged --quiet || git commit -m "chore: update token-visible language stats cards"
+          git push

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220" viewBox="0 0 420 220">
+<style>
+      .card{fill:#010409;stroke:#30363d}
+      .title{fill:#e6edf3;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+      .label{fill:#8b949e;font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+      .val{fill:#52adc8;font:700 14px ui-monospace,SFMono-Regular,Menlo,monospace}
+      .sub{fill:#8b949e;font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+    </style>
+<rect class="card" x="1" y="1" width="418" height="218" rx="8"/>
+<text class="title" x="18" y="26">GitHub Stats (token-visible)</text>
+<text class="label" x="18" y="56">Public + private repos</text>
+<text class="val" x="402" y="56" text-anchor="end">11</text>
+<text class="label" x="18" y="80">Total stars</text>
+<text class="val" x="402" y="80" text-anchor="end">10</text>
+<text class="label" x="18" y="104">Total forks</text>
+<text class="val" x="402" y="104" text-anchor="end">0</text>
+<text class="label" x="18" y="128">Total issues (authored)</text>
+<text class="val" x="402" y="128" text-anchor="end">0</text>
+<text class="label" x="18" y="152">Total PRs (authored)</text>
+<text class="val" x="402" y="152" text-anchor="end">5</text>
+<text class="label" x="18" y="176">Languages repos used</text>
+<text class="val" x="402" y="176" text-anchor="end">11</text>
+<text class="sub" x="18" y="206">Counts include repos this token can access</text>
+</svg>

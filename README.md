@@ -9,8 +9,8 @@
 ## 🌟 My GitHub
 
 <div align="center">
-  <img src="https://github-stats-extended.vercel.app/api?username=22ABLE22&show_icons=true&theme=buefy&hide_border=true&count_private=true" alt="My GitHub Stats" />
-  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=22ABLE22&layout=compact&theme=buefy&hide_border=true" alt="Most Used Languages" />
+  <img src="./assets/stats-token.svg" alt="GitHub Stats (includes private languages via Actions)" />
+  <img src="./assets/top-langs.svg" alt="Most Used Languages" />
 </div>
 
 ## 💬 About Me
