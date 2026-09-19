@@ -196,7 +196,7 @@ function iconSvg(kind, x, y, size) {
 
 /** Left card: pure stats — no rank badge, no private note */
 function renderStatsSvg(data) {
-  const width = 450;
+  const width = 420;
   const height = 185;
   const rowsLeft = [
     { icon: "star", label: "Total Stars", value: data.stars },
@@ -224,17 +224,17 @@ function renderStatsSvg(data) {
   parts.push(`<text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>`);
   parts.push(`<line x1="24" y1="46" x2="${width - 24}" y2="46" stroke="${C.border}"/>`);
 
-  const drawCol = (items, x) => {
+  const drawCol = (items, x, valDx) => {
     let y = 82;
     for (const it of items) {
       parts.push(iconSvg(it.icon, x, y, 14));
       parts.push(`<text class="l" x="${x + 20}" y="${y}">${esc(it.label)}:</text>`);
-      parts.push(`<text class="v" x="${x + 170}" y="${y}">${esc(it.value)}</text>`);
+      parts.push(`<text class="v" x="${x + valDx}" y="${y}">${esc(it.value)}</text>`);
       y += 30;
     }
   };
-  drawCol(rowsLeft, 28);
-  drawCol(rowsRight, 240);
+  drawCol(rowsLeft, 24, 155);
+  drawCol(rowsRight, 215, 155);
   parts.push(`</svg>`);
   return parts.join("\n");
 }
@@ -276,7 +276,7 @@ function renderRankSvg(rank, percentile) {
 /** Right card: top languages compact (donut + legend) */
 function renderTopLangsSvg(langs, totalBytes) {
   const items = langs.slice(0, 6);
-  const width = 350;
+  const width = 380;
   const height = 185;
 
   const parts = [];
