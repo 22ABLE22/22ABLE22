@@ -10,6 +10,7 @@
 
 <div align="center">
   <img height="165" src="./assets/stats-token.svg" alt="22ABLE22's GitHub Stats" />
+  <img height="165" src="./assets/rank.svg" alt="Rank" />
   <img height="165" src="./assets/top-langs.svg" alt="Most Used Languages" />
 </div>
 

@@ -1,27 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="450" height="195" viewBox="0 0 450 195">
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="185" viewBox="0 0 450 185">
 <style>
     .t{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
     .l{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
     .v{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
-    .m{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#6b7c85}
   </style>
-<rect x="0.5" y="0.5" width="449" height="194" rx="8" fill="#ffffff" stroke="#e6ebef"/>
+<rect x="0.5" y="0.5" width="449" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>
-<circle cx="392" cy="28" r="22" fill="#f3faf7" stroke="#42b983" stroke-width="2"/>
-<text x="392" y="28" text-anchor="middle" dominant-baseline="central" style="font:700 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#42b983">B</text>
-<text class="m" x="392" y="58" text-anchor="middle">Rank</text>
-<line x1="24" y1="48" x2="426" y2="48" stroke="#e6ebef"/>
-<text class="l" x="28" y="72">🔥 Total Stars:</text>
-<text class="v" x="193" y="72">10</text>
-<text class="l" x="28" y="100">📦 Total Repos:</text>
-<text class="v" x="193" y="100">11</text>
-<text class="l" x="28" y="128">📥 Total Forks:</text>
-<text class="v" x="193" y="128">0</text>
-<text class="l" x="240" y="72">❗ Total Issues:</text>
-<text class="v" x="405" y="72">0</text>
-<text class="l" x="240" y="100">🔃 Pull Requests:</text>
-<text class="v" x="405" y="100">5</text>
-<text class="l" x="240" y="128">🧮 Commits (1y):</text>
-<text class="v" x="405" y="128">27</text>
-<text class="m" x="24" y="179">Includes private repositories visible to STATS_PAT</text>
+<line x1="24" y1="46" x2="426" y2="46" stroke="#e6ebef"/>
+<text class="l" x="28" y="78">🔥 Total Stars:</text>
+<text class="v" x="188" y="78">10</text>
+<text class="l" x="28" y="108">📦 Total Repos:</text>
+<text class="v" x="188" y="108">11</text>
+<text class="l" x="28" y="138">📥 Total Forks:</text>
+<text class="v" x="188" y="138">0</text>
+<text class="l" x="240" y="78">❗ Total Issues:</text>
+<text class="v" x="400" y="78">0</text>
+<text class="l" x="240" y="108">🔃 Pull Requests:</text>
+<text class="v" x="400" y="108">5</text>
+<text class="l" x="240" y="138">🧮 Commits (1y):</text>
+<text class="v" x="400" y="138">157</text>
 </svg>

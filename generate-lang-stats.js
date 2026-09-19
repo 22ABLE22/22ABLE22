@@ -1,6 +1,8 @@
 /**
- * Generate GitHub-stats-like SVG cards (buefy-inspired), including private repos
- * when the token can see them. Output: assets/stats-token.svg, assets/top-langs.svg
+ * GitHub-stats-like SVG cards.
+ * Layout target (like official github-readme-stats):
+ *   [Stats]  [Rank circle]  [Top Languages]
+ * STATS_PAT private-repo note is intentionally omitted from UI.
  */
 const fs = require("fs");
 const path = require("path");
@@ -19,7 +21,6 @@ const headers = {
   "X-GitHub-Api-Version": "2022-11-28",
 };
 
-// buefy-like palette (github-readme-stats)
 const C = {
   title: "#395B64",
   text: "#395B64",
@@ -80,23 +81,33 @@ async function gh(url) {
   return res.json();
 }
 
-/** github-readme-stats style stats card (hide_border=false look, buefy colors) */
+function rankOf(data) {
+  const score =
+    (data.stars || 0) * 2 +
+    (data.commits || 0) +
+    (data.prs || 0) * 3 +
+    (data.repoCount || 0);
+  if (score > 200) return "S+";
+  if (score > 120) return "A";
+  if (score > 60) return "B";
+  if (score > 20) return "C";
+  return "C+";
+}
+
+/** Left card: pure stats — NO rank badge, NO private note */
 function renderStatsSvg(data) {
   const width = 450;
-  const height = 195;
-  const rows = [
+  const height = 185;
+  const rowsLeft = [
     { icon: "🔥", label: "Total Stars", value: data.stars },
     { icon: "📦", label: "Total Repos", value: data.repoCount },
     { icon: "📥", label: "Total Forks", value: data.forks },
+  ];
+  const rowsRight = [
     { icon: "❗", label: "Total Issues", value: data.issues },
     { icon: "🔃", label: "Pull Requests", value: data.prs },
     { icon: "🧮", label: "Commits (1y)", value: data.commits },
   ];
-
-  // rank heuristic like github-readme-stats
-  const score = data.stars * 2 + data.commits + data.prs * 3 + data.repoCount;
-  const rank =
-    score > 200 ? "S+" : score > 120 ? "A" : score > 60 ? "B" : score > 20 ? "C" : "C+";
 
   const parts = [];
   parts.push(
@@ -106,61 +117,69 @@ function renderStatsSvg(data) {
     .t{font:600 14px ${fontStack()};fill:${C.title}}
     .l{font:400 12px ${fontStack()};fill:${C.text}}
     .v{font:600 12px ${fontStack()};fill:${C.text}}
+  </style>`);
+  parts.push(
+    `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="8" fill="${C.bg}" stroke="${C.border}"/>`,
+  );
+  parts.push(`<text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>`);
+  parts.push(`<line x1="24" y1="46" x2="${width - 24}" y2="46" stroke="${C.border}"/>`);
+
+  const drawCol = (items, x) => {
+    let y = 78;
+    for (const it of items) {
+      parts.push(`<text class="l" x="${x}" y="${y}">${esc(it.icon)} ${esc(it.label)}:</text>`);
+      parts.push(`<text class="v" x="${x + 160}" y="${y}">${esc(it.value)}</text>`);
+      y += 30;
+    }
+  };
+  drawCol(rowsLeft, 28);
+  drawCol(rowsRight, 240);
+
+  parts.push(`</svg>`);
+  return parts.join("\n");
+}
+
+/** Middle card: rank only — circle with letter, like official rank badge */
+function renderRankSvg(rank) {
+  const width = 130;
+  const height = 185;
+  const cx = width / 2;
+  const cy = 88;
+  const r = 42;
+
+  const parts = [];
+  parts.push(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
+  );
+  parts.push(`<style>
+    .t{font:600 12px ${fontStack()};fill:${C.title}}
+    .r{font:700 28px ${fontStack()};fill:${C.icon}}
     .m{font:400 11px ${fontStack()};fill:${C.muted}}
   </style>`);
   parts.push(
     `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="8" fill="${C.bg}" stroke="${C.border}"/>`,
   );
+  parts.push(`<text class="t" x="${cx}" y="28" text-anchor="middle">Rank</text>`);
+  // decorative ring
   parts.push(
-    `<text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>`,
-  );
-
-  // rank circle
-  parts.push(
-    `<circle cx="392" cy="28" r="22" fill="#f3faf7" stroke="${C.icon}" stroke-width="2"/>`,
+    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#f3faf7" stroke="${C.icon}" stroke-width="3"/>`,
   );
   parts.push(
-    `<text x="392" y="28" text-anchor="middle" dominant-baseline="central" style="font:700 13px ${fontStack()};fill:${C.icon}">${esc(rank)}</text>`,
+    `<circle cx="${cx}" cy="${cy}" r="${r + 8}" fill="none" stroke="${C.icon}" stroke-width="1" opacity="0.25"/>`,
   );
   parts.push(
-    `<text class="m" x="392" y="58" text-anchor="middle">Rank</text>`,
+    `<text class="r" x="${cx}" y="${cy + 2}" text-anchor="middle" dominant-baseline="central">${esc(rank)}</text>`,
   );
-
-  // divider
-  parts.push(`<line x1="24" y1="48" x2="${width - 24}" y2="48" stroke="${C.border}"/>`);
-
-  // two-column stats like GRS
-  let y = 72;
-  const col1 = rows.slice(0, 3);
-  const col2 = rows.slice(3);
-  const drawCol = (items, x) => {
-    let yy = y;
-    for (const it of items) {
-      parts.push(
-        `<text class="l" x="${x}" y="${yy}">${esc(it.icon)} ${esc(it.label)}:</text>`,
-      );
-      parts.push(
-        `<text class="v" x="${x + 165}" y="${yy}">${esc(it.value)}</text>`,
-      );
-      yy += 28;
-    }
-  };
-  drawCol(col1, 28);
-  drawCol(col2, 240);
-
-  parts.push(
-    `<text class="m" x="24" y="${height - 16}">Includes private repositories visible to STATS_PAT</text>`,
-  );
+  parts.push(`<text class="m" x="${cx}" y="${height - 28}" text-anchor="middle">GitHub Stats</text>`);
   parts.push(`</svg>`);
   return parts.join("\n");
 }
 
-/** compact top-langs card: title + donut + legend, like github-readme-stats compact */
+/** Right card: top languages compact (donut + legend) */
 function renderTopLangsSvg(langs, totalBytes) {
   const items = langs.slice(0, 6);
   const width = 350;
-  const legendW = 200;
-  const height = 180;
+  const height = 185;
 
   const parts = [];
   parts.push(
@@ -176,11 +195,10 @@ function renderTopLangsSvg(langs, totalBytes) {
   );
   parts.push(`<text class="t" x="20" y="28">Most Used Languages</text>`);
 
-  // donut
-  const cx = 78;
-  const cy = 105;
-  const r = 48;
-  const stroke = 18;
+  const cx = 72;
+  const cy = 108;
+  const r = 44;
+  const stroke = 16;
   const circumference = 2 * Math.PI * r;
 
   parts.push(
@@ -192,23 +210,20 @@ function renderTopLangsSvg(langs, totalBytes) {
     const frac = totalBytes > 0 ? bytes / totalBytes : 0;
     const len = frac * circumference;
     parts.push(
-      `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${langColor(name)}" stroke-width="${stroke}" stroke-dasharray="${len} ${circumference - len}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})" stroke-linecap="butt"/>`,
+      `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${langColor(name)}" stroke-width="${stroke}" stroke-dasharray="${len} ${circumference - len}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`,
     );
     offset += len;
   }
 
-  // legend compact
-  let y = 56;
+  let y = 62;
   for (const [name, bytes] of items) {
     const pct = totalBytes > 0 ? ((bytes / totalBytes) * 100).toFixed(2) : "0.00";
     parts.push(
-      `<rect x="148" y="${y - 8}" width="10" height="10" rx="2" fill="${langColor(name)}"/>`,
+      `<rect x="140" y="${y - 8}" width="10" height="10" rx="2" fill="${langColor(name)}"/>`,
     );
-    parts.push(`<text class="l" x="164" y="${y}">${esc(name)}</text>`);
-    parts.push(
-      `<text class="p" x="${width - 16}" y="${y}" text-anchor="end">${pct}%</text>`,
-    );
-    y += 22;
+    parts.push(`<text class="l" x="156" y="${y}">${esc(name)}</text>`);
+    parts.push(`<text class="p" x="${width - 16}" y="${y}" text-anchor="end">${pct}%</text>`);
+    y += 20;
   }
 
   parts.push(`</svg>`);
@@ -261,14 +276,9 @@ async function main() {
     console.warn("search fail", e.message);
   }
 
-  // last-year commits from contribution calendar when possible
   try {
     const q = `{"query":"{ user(login:\\"22ABLE22\\"){ contributionsCollection { totalCommitContributions contributionCalendar { totalContributions } } } }"}`;
-    const res = await fetch(`${API}/graphql`, {
-      method: "POST",
-      headers,
-      body: q,
-    });
+    const res = await fetch(`${API}/graphql`, { method: "POST", headers, body: q });
     if (res.ok) {
       const g = await res.json();
       commits =
@@ -282,31 +292,18 @@ async function main() {
 
   const langs = [...langMap.entries()].filter(([, b]) => b > 0).sort((a, b) => b[1] - a[1]);
   const total = langs.reduce((s, [, b]) => s + b, 0);
+  const stats = { repoCount: repos.length, stars, forks, issues, prs, commits };
+  const rank = rankOf(stats);
 
   const outDir = path.join(process.cwd(), "assets");
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(
-    path.join(outDir, "stats-token.svg"),
-    renderStatsSvg({
-      repoCount: repos.length,
-      stars,
-      forks,
-      issues,
-      prs,
-      commits,
-    }),
-    "utf8",
-  );
-  fs.writeFileSync(
-    path.join(outDir, "top-langs.svg"),
-    renderTopLangsSvg(langs, total),
-    "utf8",
-  );
+  fs.writeFileSync(path.join(outDir, "stats-token.svg"), renderStatsSvg(stats), "utf8");
+  fs.writeFileSync(path.join(outDir, "rank.svg"), renderRankSvg(rank), "utf8");
+  fs.writeFileSync(path.join(outDir, "top-langs.svg"), renderTopLangsSvg(langs, total), "utf8");
 
-  console.log("repos:", repos.length);
-  console.log("top langs:", langs.slice(0, 8));
-  console.log("commits(1y):", commits, "stars:", stars, "issues:", issues, "prs:", prs);
-  console.log("wrote assets/stats-token.svg assets/top-langs.svg");
+  console.log("repos:", repos.length, "rank:", rank);
+  console.log("top langs:", langs.slice(0, 6));
+  console.log("stars/forks/issues/prs/commits:", stars, forks, issues, prs, commits);
 }
 
 main().catch((e) => {

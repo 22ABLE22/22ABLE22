@@ -1,34 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="350" height="180" viewBox="0 0 350 180">
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="185" viewBox="0 0 350 185">
 <style>
     .t{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
     .l{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
     .p{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
   </style>
-<rect x="0.5" y="0.5" width="349" height="179" rx="8" fill="#ffffff" stroke="#e6ebef"/>
+<rect x="0.5" y="0.5" width="349" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="20" y="28">Most Used Languages</text>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#dfe7ee" stroke-width="18"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#3572A5" stroke-width="18" stroke-dasharray="117.23679145607036 184.35610328854978" stroke-dashoffset="0" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#DA5B0B" stroke-width="18" stroke-dasharray="96.29754116656615 205.295353578054" stroke-dashoffset="-117.23679145607036" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#355570" stroke-width="18" stroke-dasharray="41.03797190650106 260.55492283811907" stroke-dashoffset="-213.5343326226365" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#e34c26" stroke-width="18" stroke-dasharray="18.90998623846051 282.6829085061596" stroke-dashoffset="-254.57230452913757" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#f1e05a" stroke-width="18" stroke-dasharray="14.776481747241581 286.81641299737856" stroke-dashoffset="-273.4822907675981" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<circle cx="78" cy="105" r="48" fill="none" stroke="#3178c6" stroke-width="18" stroke-dasharray="9.32992984202421 292.2629649025959" stroke-dashoffset="-288.2587725148397" transform="rotate(-90 78 105)" stroke-linecap="butt"/>
-<rect x="148" y="48" width="10" height="10" rx="2" fill="#3572A5"/>
-<text class="l" x="164" y="56">Python</text>
-<text class="p" x="334" y="56" text-anchor="end">38.87%</text>
-<rect x="148" y="70" width="10" height="10" rx="2" fill="#DA5B0B"/>
-<text class="l" x="164" y="78">Jupyter Notebook</text>
-<text class="p" x="334" y="78" text-anchor="end">31.93%</text>
-<rect x="148" y="92" width="10" height="10" rx="2" fill="#355570"/>
-<text class="l" x="164" y="100">GDScript</text>
-<text class="p" x="334" y="100" text-anchor="end">13.61%</text>
-<rect x="148" y="114" width="10" height="10" rx="2" fill="#e34c26"/>
-<text class="l" x="164" y="122">HTML</text>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#dfe7ee" stroke-width="16"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#3572A5" stroke-width="16" stroke-dasharray="107.46705883473116 168.9930946811706" stroke-dashoffset="0" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#DA5B0B" stroke-width="16" stroke-dasharray="88.2727460693523 188.18740744654946" stroke-dashoffset="-107.46705883473116" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#355570" stroke-width="16" stroke-dasharray="37.61814091429264 238.84201260160913" stroke-dashoffset="-195.73980490408346" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#e34c26" stroke-width="16" stroke-dasharray="17.334154051922134 259.1259994639796" stroke-dashoffset="-233.3579458183761" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#f1e05a" stroke-width="16" stroke-dasharray="13.545108268304782 262.915045247597" stroke-dashoffset="-250.69209987029822" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#3178c6" stroke-width="16" stroke-dasharray="8.552435688522193 267.9077178273796" stroke-dashoffset="-264.237208138603" transform="rotate(-90 72 108)"/>
+<rect x="140" y="54" width="10" height="10" rx="2" fill="#3572A5"/>
+<text class="l" x="156" y="62">Python</text>
+<text class="p" x="334" y="62" text-anchor="end">38.87%</text>
+<rect x="140" y="74" width="10" height="10" rx="2" fill="#DA5B0B"/>
+<text class="l" x="156" y="82">Jupyter Notebook</text>
+<text class="p" x="334" y="82" text-anchor="end">31.93%</text>
+<rect x="140" y="94" width="10" height="10" rx="2" fill="#355570"/>
+<text class="l" x="156" y="102">GDScript</text>
+<text class="p" x="334" y="102" text-anchor="end">13.61%</text>
+<rect x="140" y="114" width="10" height="10" rx="2" fill="#e34c26"/>
+<text class="l" x="156" y="122">HTML</text>
 <text class="p" x="334" y="122" text-anchor="end">6.27%</text>
-<rect x="148" y="136" width="10" height="10" rx="2" fill="#f1e05a"/>
-<text class="l" x="164" y="144">JavaScript</text>
-<text class="p" x="334" y="144" text-anchor="end">4.90%</text>
-<rect x="148" y="158" width="10" height="10" rx="2" fill="#3178c6"/>
-<text class="l" x="164" y="166">TypeScript</text>
-<text class="p" x="334" y="166" text-anchor="end">3.09%</text>
+<rect x="140" y="134" width="10" height="10" rx="2" fill="#f1e05a"/>
+<text class="l" x="156" y="142">JavaScript</text>
+<text class="p" x="334" y="142" text-anchor="end">4.90%</text>
+<rect x="140" y="154" width="10" height="10" rx="2" fill="#3178c6"/>
+<text class="l" x="156" y="162">TypeScript</text>
+<text class="p" x="334" y="162" text-anchor="end">3.09%</text>
 </svg>
