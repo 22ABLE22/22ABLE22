@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="185" viewBox="0 0 130 185">
 <style>
     .t{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#395B64}
-    .r{font:700 28px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#42b983}
-    .m{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#6b7c85}
+    .r{font:700 26px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#42b983}
+    .m{font:400 10px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,PingFang SC,Microsoft YaHei,sans-serif;fill:#6b7c85}
   </style>
 <rect x="0.5" y="0.5" width="129" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="65" y="28" text-anchor="middle">Rank</text>
 <circle cx="65" cy="88" r="42" fill="#f3faf7" stroke="#42b983" stroke-width="3"/>
 <circle cx="65" cy="88" r="50" fill="none" stroke="#42b983" stroke-width="1" opacity="0.25"/>
-<text class="r" x="65" y="90" text-anchor="middle" dominant-baseline="central">S+</text>
-<text class="m" x="65" y="157" text-anchor="middle">GitHub Stats</text>
+<text class="r" x="65" y="90" text-anchor="middle" dominant-baseline="central">C+</text>
+<text class="m" x="65" y="157" text-anchor="middle">github-readme-stats</text>
+<text class="m" x="65" y="171" text-anchor="middle">pct 82</text>
 </svg>

@@ -1,8 +1,8 @@
 /**
  * GitHub-stats-like SVG cards.
- * Layout target (like official github-readme-stats):
- *   [Stats]  [Rank circle]  [Top Languages]
- * STATS_PAT private-repo note is intentionally omitted from UI.
+ * Layout: [Stats]  [Rank circle]  [Top Languages]
+ * Rank uses the official anuraghazra/github-readme-stats algorithm.
+ *   https://github.com/anuraghazra/github-readme-stats/blob/master/src/calculateRank.js
  */
 const fs = require("fs");
 const path = require("path");
@@ -81,32 +81,74 @@ async function gh(url) {
   return res.json();
 }
 
-function rankOf(data) {
-  const score =
-    (data.stars || 0) * 2 +
-    (data.commits || 0) +
-    (data.prs || 0) * 3 +
-    (data.repoCount || 0);
-  if (score > 200) return "S+";
-  if (score > 120) return "A";
-  if (score > 60) return "B";
-  if (score > 20) return "C";
-  return "C+";
+/** Official github-readme-stats calculateRank */
+function exponential_cdf(x) {
+  return 1 - 2 ** -x;
 }
 
-/** Left card: pure stats — NO rank badge, NO private note */
+function log_normal_cdf(x) {
+  // approximation used by github-readme-stats
+  return x / (1 + x);
+}
+
+/**
+ * Port of anuraghazra/github-readme-stats src/calculateRank.js
+ * @returns {{ level: string, percentile: number }}
+ */
+function calculateRank({ all_commits, commits, prs, issues, reviews, repos, stars, followers }) {
+  const COMMITS_MEDIAN = all_commits ? 1000 : 250,
+    COMMITS_WEIGHT = 2;
+  const PRS_MEDIAN = 50,
+    PRS_WEIGHT = 3;
+  const ISSUES_MEDIAN = 25,
+    ISSUES_WEIGHT = 1;
+  const REVIEWS_MEDIAN = 2,
+    REVIEWS_WEIGHT = 1;
+  const STARS_MEDIAN = 50,
+    STARS_WEIGHT = 4;
+  const FOLLOWERS_MEDIAN = 10,
+    FOLLOWERS_WEIGHT = 1;
+
+  const TOTAL_WEIGHT =
+    COMMITS_WEIGHT +
+    PRS_WEIGHT +
+    ISSUES_WEIGHT +
+    REVIEWS_WEIGHT +
+    STARS_WEIGHT +
+    FOLLOWERS_WEIGHT;
+
+  // Official ladder (no S+/S-/C- in upstream)
+  const THRESHOLDS = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100];
+  const LEVELS = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"];
+
+  const rank =
+    1 -
+    (COMMITS_WEIGHT * exponential_cdf(commits / COMMITS_MEDIAN) +
+      PRS_WEIGHT * exponential_cdf(prs / PRS_MEDIAN) +
+      ISSUES_WEIGHT * exponential_cdf(issues / ISSUES_MEDIAN) +
+      REVIEWS_WEIGHT * exponential_cdf(reviews / REVIEWS_MEDIAN) +
+      STARS_WEIGHT * log_normal_cdf(stars / STARS_MEDIAN) +
+      FOLLOWERS_WEIGHT * log_normal_cdf(followers / FOLLOWERS_MEDIAN)) /
+      TOTAL_WEIGHT;
+
+  const idx = THRESHOLDS.findIndex((t) => rank * 100 <= t);
+  const level = LEVELS[idx >= 0 ? idx : LEVELS.length - 1];
+  return { level, percentile: rank * 100 };
+}
+
+/** Left card: pure stats — no rank badge, no private note */
 function renderStatsSvg(data) {
   const width = 450;
   const height = 185;
   const rowsLeft = [
-    { icon: "🔥", label: "Total Stars", value: data.stars },
-    { icon: "📦", label: "Total Repos", value: data.repoCount },
-    { icon: "📥", label: "Total Forks", value: data.forks },
+    { icon: "★", label: "Total Stars", value: data.stars },
+    { icon: "▦", label: "Total Repos", value: data.repoCount },
+    { icon: "⑂", label: "Total Forks", value: data.forks },
   ];
   const rowsRight = [
-    { icon: "❗", label: "Total Issues", value: data.issues },
-    { icon: "🔃", label: "Pull Requests", value: data.prs },
-    { icon: "🧮", label: "Commits (1y)", value: data.commits },
+    { icon: "!", label: "Total Issues", value: data.issues },
+    { icon: "⇄", label: "Pull Requests", value: data.prs },
+    { icon: "⌘", label: "Commits (1y)", value: data.commits },
   ];
 
   const parts = [];
@@ -134,13 +176,12 @@ function renderStatsSvg(data) {
   };
   drawCol(rowsLeft, 28);
   drawCol(rowsRight, 240);
-
   parts.push(`</svg>`);
   return parts.join("\n");
 }
 
-/** Middle card: rank only — circle with letter, like official rank badge */
-function renderRankSvg(rank) {
+/** Middle card: official rank letter in a circle */
+function renderRankSvg(rank, percentile) {
   const width = 130;
   const height = 185;
   const cx = width / 2;
@@ -153,14 +194,13 @@ function renderRankSvg(rank) {
   );
   parts.push(`<style>
     .t{font:600 12px ${fontStack()};fill:${C.title}}
-    .r{font:700 28px ${fontStack()};fill:${C.icon}}
-    .m{font:400 11px ${fontStack()};fill:${C.muted}}
+    .r{font:700 26px ${fontStack()};fill:${C.icon}}
+    .m{font:400 10px ${fontStack()};fill:${C.muted}}
   </style>`);
   parts.push(
     `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="8" fill="${C.bg}" stroke="${C.border}"/>`,
   );
   parts.push(`<text class="t" x="${cx}" y="28" text-anchor="middle">Rank</text>`);
-  // decorative ring
   parts.push(
     `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#f3faf7" stroke="${C.icon}" stroke-width="3"/>`,
   );
@@ -170,7 +210,11 @@ function renderRankSvg(rank) {
   parts.push(
     `<text class="r" x="${cx}" y="${cy + 2}" text-anchor="middle" dominant-baseline="central">${esc(rank)}</text>`,
   );
-  parts.push(`<text class="m" x="${cx}" y="${height - 28}" text-anchor="middle">GitHub Stats</text>`);
+  const p = Number.isFinite(percentile) ? percentile.toFixed(0) : "";
+  parts.push(`<text class="m" x="${cx}" y="${height - 28}" text-anchor="middle">github-readme-stats</text>`);
+  if (p) {
+    parts.push(`<text class="m" x="${cx}" y="${height - 14}" text-anchor="middle">pct ${p}</text>`);
+  }
   parts.push(`</svg>`);
   return parts.join("\n");
 }
@@ -230,7 +274,26 @@ function renderTopLangsSvg(langs, totalBytes) {
   return parts.join("\n");
 }
 
+async function graphql(query) {
+  const res = await fetch(`${API}/graphql`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => res.statusText);
+    throw new Error(`graphql ${res.status} ${text.slice(0, 200)}`);
+  }
+  const json = await res.json();
+  if (json.errors?.[0]) throw new Error(json.errors[0].message);
+  return json.data;
+}
+
 async function main() {
+  const me = await gh(`${API}/user`);
+  const login = me.login;
+  const followers = me.followers || 0;
+
   const repos = [];
   for (let page = 1; page <= 5; page += 1) {
     const batch = await gh(
@@ -243,9 +306,6 @@ async function main() {
   const langMap = new Map();
   let stars = 0;
   let forks = 0;
-  let issues = 0;
-  let prs = 0;
-  let commits = 0;
 
   for (const repo of repos) {
     stars += repo.stargazers_count || 0;
@@ -261,9 +321,12 @@ async function main() {
     }
   }
 
+  let issues = 0;
+  let prs = 0;
+  let commits = 0;
+  let reviews = 0;
+
   try {
-    const me = await gh(`${API}/user`);
-    const login = me.login;
     const iss = await gh(
       `${API}/search/issues?q=${encodeURIComponent(`author:${login} type:issue`)}&per_page=1`,
     );
@@ -277,33 +340,53 @@ async function main() {
   }
 
   try {
-    const q = `{"query":"{ user(login:\\"22ABLE22\\"){ contributionsCollection { totalCommitContributions contributionCalendar { totalContributions } } } }"}`;
-    const res = await fetch(`${API}/graphql`, { method: "POST", headers, body: q });
-    if (res.ok) {
-      const g = await res.json();
-      commits =
-        g?.data?.user?.contributionsCollection?.totalCommitContributions ??
-        g?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ??
-        0;
-    }
+    const data = await graphql(`{
+      user(login: "${login}") {
+        contributionsCollection {
+          totalCommitContributions
+          totalPullRequestReviewContributions
+          contributionCalendar { totalContributions }
+        }
+      }
+    }`);
+    const cc = data.user.contributionsCollection;
+    commits = cc.totalCommitContributions || 0;
+    reviews = cc.totalPullRequestReviewContributions || 0;
+    if (!commits) commits = cc.contributionCalendar?.totalContributions || 0;
   } catch (e) {
-    console.warn("graphql commits fail", e.message);
+    console.warn("graphql fail", e.message);
   }
+
+  // all_commits=false → use last-year commit count (GRS default unless include_all_commits)
+  const rankInfo = calculateRank({
+    all_commits: false,
+    commits,
+    prs,
+    issues,
+    reviews,
+    repos: repos.length,
+    stars,
+    followers,
+  });
 
   const langs = [...langMap.entries()].filter(([, b]) => b > 0).sort((a, b) => b[1] - a[1]);
   const total = langs.reduce((s, [, b]) => s + b, 0);
   const stats = { repoCount: repos.length, stars, forks, issues, prs, commits };
-  const rank = rankOf(stats);
 
   const outDir = path.join(process.cwd(), "assets");
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "stats-token.svg"), renderStatsSvg(stats), "utf8");
-  fs.writeFileSync(path.join(outDir, "rank.svg"), renderRankSvg(rank), "utf8");
+  fs.writeFileSync(
+    path.join(outDir, "rank.svg"),
+    renderRankSvg(rankInfo.level, rankInfo.percentile),
+    "utf8",
+  );
   fs.writeFileSync(path.join(outDir, "top-langs.svg"), renderTopLangsSvg(langs, total), "utf8");
 
-  console.log("repos:", repos.length, "rank:", rank);
+  console.log("login:", login);
+  console.log("inputs:", { commits, prs, issues, reviews, stars, followers, repos: repos.length });
+  console.log("official rank:", rankInfo);
   console.log("top langs:", langs.slice(0, 6));
-  console.log("stars/forks/issues/prs/commits:", stars, forks, issues, prs, commits);
 }
 
 main().catch((e) => {

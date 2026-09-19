@@ -7,16 +7,16 @@
 <rect x="0.5" y="0.5" width="449" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>
 <line x1="24" y1="46" x2="426" y2="46" stroke="#e6ebef"/>
-<text class="l" x="28" y="78">🔥 Total Stars:</text>
+<text class="l" x="28" y="78">★ Total Stars:</text>
 <text class="v" x="188" y="78">10</text>
-<text class="l" x="28" y="108">📦 Total Repos:</text>
+<text class="l" x="28" y="108">▦ Total Repos:</text>
 <text class="v" x="188" y="108">11</text>
-<text class="l" x="28" y="138">📥 Total Forks:</text>
+<text class="l" x="28" y="138">⑂ Total Forks:</text>
 <text class="v" x="188" y="138">0</text>
-<text class="l" x="240" y="78">❗ Total Issues:</text>
+<text class="l" x="240" y="78">! Total Issues:</text>
 <text class="v" x="400" y="78">0</text>
-<text class="l" x="240" y="108">🔃 Pull Requests:</text>
+<text class="l" x="240" y="108">⇄ Pull Requests:</text>
 <text class="v" x="400" y="108">5</text>
-<text class="l" x="240" y="138">🧮 Commits (1y):</text>
-<text class="v" x="400" y="138">159</text>
+<text class="l" x="240" y="138">⌘ Commits (1y):</text>
+<text class="v" x="400" y="138">161</text>
 </svg>
