@@ -7,16 +7,22 @@
 <rect x="0.5" y="0.5" width="449" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="24" y="30">22ABLE22's GitHub Stats</text>
 <line x1="24" y1="46" x2="426" y2="46" stroke="#e6ebef"/>
-<text class="l" x="28" y="78">★ Total Stars:</text>
-<text class="v" x="188" y="78">10</text>
-<text class="l" x="28" y="108">▦ Total Repos:</text>
-<text class="v" x="188" y="108">11</text>
-<text class="l" x="28" y="138">⑂ Total Forks:</text>
-<text class="v" x="188" y="138">0</text>
-<text class="l" x="240" y="78">! Total Issues:</text>
-<text class="v" x="400" y="78">0</text>
-<text class="l" x="240" y="108">⇄ Pull Requests:</text>
-<text class="v" x="400" y="108">5</text>
-<text class="l" x="240" y="138">⌘ Commits (1y):</text>
-<text class="v" x="400" y="138">162</text>
+<svg x="28" y="68" width="14" height="14" viewBox="0 0 16 16" fill="none"><path fill="#f5a623" d="M8 1.5l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.77 4.48 12.34l.67-3.92L2.3 5.64l3.94-.57L8 1.5z"/></svg>
+<text class="l" x="48" y="82">Total Stars:</text>
+<text class="v" x="198" y="82">10</text>
+<svg x="28" y="98" width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="1.5" width="12" height="13" rx="1.5" fill="#52adc8"/><path fill="#ffffff" d="M5 4.5h6v1.2H5zm0 2.8h6v1.2H5zm0 2.8h4v1.2H5z"/></svg>
+<text class="l" x="48" y="112">Total Repos:</text>
+<text class="v" x="198" y="112">11</text>
+<svg x="28" y="128" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="3.5" r="2" fill="#6b7c85"/><circle cx="12" cy="3.5" r="2" fill="#6b7c85"/><circle cx="8" cy="12.5" r="2" fill="#6b7c85"/><path stroke="#6b7c85" stroke-width="1.4" d="M4 5.5v2a2 2 0 002 2h4a2 2 0 002-2v-2M8 9.5v1"/></svg>
+<text class="l" x="48" y="142">Total Forks:</text>
+<text class="v" x="198" y="142">0</text>
+<svg x="240" y="68" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" fill="#e5534b"/><circle cx="8" cy="8" r="2.2" fill="#ffffff"/></svg>
+<text class="l" x="260" y="82">Total Issues:</text>
+<text class="v" x="410" y="82">0</text>
+<svg x="240" y="98" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="2" fill="#8957e5"/><circle cx="4" cy="12" r="2" fill="#8957e5"/><circle cx="12" cy="12" r="2" fill="#8957e5"/><path stroke="#8957e5" stroke-width="1.4" d="M4 6v4M6 4h3l2 2M12 10V8"/></svg>
+<text class="l" x="260" y="112">Pull Requests:</text>
+<text class="v" x="410" y="112">5</text>
+<svg x="240" y="128" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" fill="#3fb950"/><path stroke="#3fb950" stroke-width="1.6" d="M1 8h4M11 8h4"/></svg>
+<text class="l" x="260" y="142">Commits (1y):</text>
+<text class="v" x="410" y="142">163</text>
 </svg>

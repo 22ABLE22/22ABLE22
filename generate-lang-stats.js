@@ -136,19 +136,77 @@ function calculateRank({ all_commits, commits, prs, issues, reviews, repos, star
   return { level, percentile: rank * 100 };
 }
 
+/** Simple colored icons (github-readme-stats like), 16x16 viewBox */
+function iconSvg(kind, x, y, size) {
+  const s = size || 14;
+  const k = s / 16;
+  const open = `<svg x="${x}" y="${y - s}" width="${s}" height="${s}" viewBox="0 0 16 16" fill="none">`;
+  const close = `</svg>`;
+  if (kind === "star") {
+    return (
+      open +
+      `<path fill="#f5a623" d="M8 1.5l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.77 4.48 12.34l.67-3.92L2.3 5.64l3.94-.57L8 1.5z"/>` +
+      close
+    );
+  }
+  if (kind === "repo") {
+    return (
+      open +
+      `<rect x="2" y="1.5" width="12" height="13" rx="1.5" fill="#52adc8"/>` +
+      `<path fill="#ffffff" d="M5 4.5h6v1.2H5zm0 2.8h6v1.2H5zm0 2.8h4v1.2H5z"/>` +
+      close
+    );
+  }
+  if (kind === "fork") {
+    return (
+      open +
+      `<circle cx="4" cy="3.5" r="2" fill="#6b7c85"/>` +
+      `<circle cx="12" cy="3.5" r="2" fill="#6b7c85"/>` +
+      `<circle cx="8" cy="12.5" r="2" fill="#6b7c85"/>` +
+      `<path stroke="#6b7c85" stroke-width="1.4" d="M4 5.5v2a2 2 0 002 2h4a2 2 0 002-2v-2M8 9.5v1"/>` +
+      close
+    );
+  }
+  if (kind === "issue") {
+    return (
+      open +
+      `<circle cx="8" cy="8" r="6" fill="#e5534b"/>` +
+      `<circle cx="8" cy="8" r="2.2" fill="#ffffff"/>` +
+      close
+    );
+  }
+  if (kind === "pr") {
+    return (
+      open +
+      `<circle cx="4" cy="4" r="2" fill="#8957e5"/>` +
+      `<circle cx="4" cy="12" r="2" fill="#8957e5"/>` +
+      `<circle cx="12" cy="12" r="2" fill="#8957e5"/>` +
+      `<path stroke="#8957e5" stroke-width="1.4" d="M4 6v4M6 4h3l2 2M12 10V8"/>` +
+      close
+    );
+  }
+  // commit
+  return (
+    open +
+    `<circle cx="8" cy="8" r="3" fill="#3fb950"/>` +
+    `<path stroke="#3fb950" stroke-width="1.6" d="M1 8h4M11 8h4"/>` +
+    close
+  );
+}
+
 /** Left card: pure stats — no rank badge, no private note */
 function renderStatsSvg(data) {
   const width = 450;
   const height = 185;
   const rowsLeft = [
-    { icon: "★", label: "Total Stars", value: data.stars },
-    { icon: "▦", label: "Total Repos", value: data.repoCount },
-    { icon: "⑂", label: "Total Forks", value: data.forks },
+    { icon: "star", label: "Total Stars", value: data.stars },
+    { icon: "repo", label: "Total Repos", value: data.repoCount },
+    { icon: "fork", label: "Total Forks", value: data.forks },
   ];
   const rowsRight = [
-    { icon: "!", label: "Total Issues", value: data.issues },
-    { icon: "⇄", label: "Pull Requests", value: data.prs },
-    { icon: "⌘", label: "Commits (1y)", value: data.commits },
+    { icon: "issue", label: "Total Issues", value: data.issues },
+    { icon: "pr", label: "Pull Requests", value: data.prs },
+    { icon: "commit", label: "Commits (1y)", value: data.commits },
   ];
 
   const parts = [];
@@ -167,10 +225,11 @@ function renderStatsSvg(data) {
   parts.push(`<line x1="24" y1="46" x2="${width - 24}" y2="46" stroke="${C.border}"/>`);
 
   const drawCol = (items, x) => {
-    let y = 78;
+    let y = 82;
     for (const it of items) {
-      parts.push(`<text class="l" x="${x}" y="${y}">${esc(it.icon)} ${esc(it.label)}:</text>`);
-      parts.push(`<text class="v" x="${x + 160}" y="${y}">${esc(it.value)}</text>`);
+      parts.push(iconSvg(it.icon, x, y, 14));
+      parts.push(`<text class="l" x="${x + 20}" y="${y}">${esc(it.label)}:</text>`);
+      parts.push(`<text class="v" x="${x + 170}" y="${y}">${esc(it.value)}</text>`);
       y += 30;
     }
   };
