@@ -1,11 +1,8 @@
 name: Generate profile stats SVG
-
 on:
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   stats:
     runs-on: ubuntu-latest
@@ -20,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
         run: |
           if [ -z "$GITHUB_TOKEN" ]; then
-            echo "STATS_PAT not set; skip to keep current cards."
+            echo "STATS_PAT not set; keep current cards."
             exit 0
           fi
           node generate-lang-stats.js
