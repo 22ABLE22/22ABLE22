@@ -6,7 +6,7 @@
   </style>
 <rect x="0.5" y="0.5" width="129" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="65" y="28" text-anchor="middle">Rank</text>
-<circle cx="65" cy="100" r="42" fill="#f3faf7" stroke="#42b983" stroke-width="3"/>
-<circle cx="65" cy="100" r="50" fill="none" stroke="#42b983" stroke-width="1" opacity="0.25"/>
-<text class="r" x="65" y="102" text-anchor="middle" dominant-baseline="central">C+</text>
+<circle cx="65" cy="115" r="42" fill="#f3faf7" stroke="#42b983" stroke-width="3"/>
+<circle cx="65" cy="115" r="50" fill="none" stroke="#42b983" stroke-width="1" opacity="0.25"/>
+<text class="r" x="65" y="117" text-anchor="middle" dominant-baseline="central">C+</text>
 </svg>
