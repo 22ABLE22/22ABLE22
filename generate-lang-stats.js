@@ -244,7 +244,7 @@ function renderRankSvg(rank, percentile) {
   const width = 130;
   const height = 185;
   const cx = width / 2;
-  const cy = 115;
+  const cy = 110;
   const r = 42;
 
   const parts = [];
