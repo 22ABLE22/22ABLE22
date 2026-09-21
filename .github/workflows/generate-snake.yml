@@ -2,8 +2,8 @@ name: Generate snake SVG
 
 on:
   schedule:
-    # every 10 minutes (snake is heavier; GitHub may delay cron)
-    - cron: "*/10 * * * *"
+    # twice a day: 02:00 & 14:00 UTC (≈10:00 & 22:00 UTC+8)
+    - cron: "0 2,14 * * *"
   workflow_dispatch:
   push:
     branches: [main]

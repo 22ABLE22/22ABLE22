@@ -2,8 +2,8 @@ name: Generate profile stats SVG
 
 on:
   schedule:
-    # every 5 minutes (GitHub may delay under load; public repo Actions free)
-    - cron: "*/5 * * * *"
+    # twice a day: 02:00 & 14:00 UTC (≈10:00 & 22:00 UTC+8)
+    - cron: "0 2,14 * * *"
   workflow_dispatch:
   push:
     branches: [main]
