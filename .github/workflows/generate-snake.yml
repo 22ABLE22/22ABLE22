@@ -2,7 +2,8 @@ name: Generate snake SVG
 
 on:
   schedule:
-    - cron: "0 16 * * *"
+    # every 10 minutes (snake is heavier; GitHub may delay cron)
+    - cron: "*/10 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -13,28 +14,36 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Prefer SNAKE_PAT (classic PAT with read:user) so private contributions
-      # are included in the contribution calendar when profile settings allow it.
       - name: Generate snake
         uses: Platane/snk@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
         with:
           github_user_name: 22ABLE22
-          github_token: ${{ secrets.SNAKE_PAT || github.token }}
+          github_token: ${{ secrets.SNAKE_PAT }}
           outputs: |
             assets/github-contribution-grid-snake.svg
             assets/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Commit
+      - name: Commit if changed
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/github-contribution-grid-snake.svg assets/github-contribution-grid-snake-dark.svg
-          git diff --staged --quiet || git commit -m "chore: update contribution snake"
-          git push
+
+          if [ -f assets/github-contribution-grid-snake.svg ]; then
+            TS=$(date -u +%Y%m%d%H%M)
+            # bust raw.githubusercontent cache for snake images
+            sed -i -E "s#(github-contribution-grid-snake\.svg)(\?[^\"]*)?#\1?v=${TS}#g" README.md
+            sed -i -E "s#(github-contribution-grid-snake-dark\.svg)(\?[^\"]*)?#\1?v=${TS}#g" README.md
+          fi
+
+          git add assets/github-contribution-grid-snake.svg assets/github-contribution-grid-snake-dark.svg README.md || true
+          git diff --staged --quiet || git commit -m "chore: auto-update contribution snake"
+          git pull --rebase origin main || true
+          git push origin main || true

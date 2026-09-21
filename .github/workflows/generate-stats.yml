@@ -1,30 +1,64 @@
 name: Generate profile stats SVG
+
 on:
+  schedule:
+    # every 5 minutes (GitHub may delay under load; public repo Actions free)
+    - cron: "*/5 * * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+
 permissions:
   contents: write
+
 jobs:
   stats:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Generate cards
+
+      - name: Generate cards (Stats / Rank / Languages)
         env:
           GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
         run: |
           if [ -z "$GITHUB_TOKEN" ]; then
-            echo "STATS_PAT not set; keep current cards."
+            echo "STATS_PAT not configured; skip this run."
             exit 0
           fi
           node generate-lang-stats.js
-      - name: Commit
+
+      - name: Commit if changed
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/top-langs.svg assets/stats-token.svg assets/rank.svg
-          git diff --staged --quiet || git commit -m "chore: update stats cards"
-          git push
+
+          if [ -f assets/stats-token.svg ]; then
+            TS=$(date -u +%Y%m%d%H%M)
+            # bust browser/CDN cache for the three cards
+            sed -i -E "s#(stats-token\.svg)\?v=[^\"]+#\1?v=${TS}#g" README.md
+            sed -i -E "s#(rank\.svg)\?v=[^\"]+#\1?v=${TS}#g" README.md
+            sed -i -E "s#(top-langs\.svg)\?v=[^\"]+#\1?v=${TS}#g" README.md
+            # if README has no query yet, append
+            if ! grep -q 'stats-token.svg?v=' README.md; then
+              sed -i -E "s#(\./assets/stats-token\.svg)(\")#\1?v=${TS}\2#g" README.md
+            fi
+            if ! grep -q 'rank.svg?v=' README.md; then
+              sed -i -E "s#(\./assets/rank\.svg)(\")#\1?v=${TS}\2#g" README.md
+            fi
+            if ! grep -q 'top-langs.svg?v=' README.md; then
+              sed -i -E "s#(\./assets/top-langs\.svg)(\")#\1?v=${TS}\2#g" README.md
+            fi
+          fi
+
+          git add assets/stats-token.svg assets/rank.svg assets/top-langs.svg README.md generate-lang-stats.js || true
+          git diff --staged --quiet || git commit -m "chore: auto-update profile stats cards"
+          git pull --rebase origin main || true
+          git push origin main || true
