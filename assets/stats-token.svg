@@ -21,8 +21,8 @@
 <text class="v" x="370" y="82">0</text>
 <svg x="215" y="98" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="2" fill="#8957e5"/><circle cx="4" cy="12" r="2" fill="#8957e5"/><circle cx="12" cy="12" r="2" fill="#8957e5"/><path stroke="#8957e5" stroke-width="1.4" d="M4 6v4M6 4h3l2 2M12 10V8"/></svg>
 <text class="l" x="235" y="112">Pull Requests:</text>
-<text class="v" x="370" y="112">29</text>
+<text class="v" x="370" y="112">31</text>
 <svg x="215" y="128" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" fill="#3fb950"/><path stroke="#3fb950" stroke-width="1.6" d="M1 8h4M11 8h4"/></svg>
 <text class="l" x="235" y="142">Commits (1y):</text>
-<text class="v" x="370" y="142">242</text>
+<text class="v" x="370" y="142">245</text>
 </svg>
