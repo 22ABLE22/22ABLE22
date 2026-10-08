@@ -35,8 +35,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake-dark.svg?v=202610071941">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610071941">
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610071941" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake-dark.svg?v=202610080820">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610080820">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610080820" width="100%">
   </picture>
 </p>
