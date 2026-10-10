@@ -2,10 +2,6 @@
 
 欢迎访问我的 GitHub 主页。
 
-- 如何联系我:
-  - 📧 crh1102@163.com
-  - 🔗 [@22ABLE22](https://github.com/22ABLE22)
-
 ## 🌟 My GitHub
 
 <div align="center">
