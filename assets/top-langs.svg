@@ -7,28 +7,28 @@
 <rect x="0.5" y="0.5" width="379" height="184" rx="8" fill="#ffffff" stroke="#e6ebef"/>
 <text class="t" x="20" y="28">Most Used Languages</text>
 <circle cx="72" cy="108" r="44" fill="none" stroke="#dfe7ee" stroke-width="16"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#3572A5" stroke-width="16" stroke-dasharray="110.25633580432273 166.20381771157903" stroke-dashoffset="0" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#DA5B0B" stroke-width="16" stroke-dasharray="77.88965728382666 198.5704962320751" stroke-dashoffset="-110.25633580432273" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#355570" stroke-width="16" stroke-dasharray="34.96937763148962 241.49077588441213" stroke-dashoffset="-188.1459930881494" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#e34c26" stroke-width="16" stroke-dasharray="16.361257405476007 260.09889611042576" stroke-dashoffset="-223.11537071963903" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#f1e05a" stroke-width="16" stroke-dasharray="14.000676789410573 262.4594767264912" stroke-dashoffset="-239.47662812511504" transform="rotate(-90 72 108)"/>
-<circle cx="72" cy="108" r="44" fill="none" stroke="#8b949e" stroke-width="16" stroke-dasharray="12.175115689620519 264.28503782628127" stroke-dashoffset="-253.4773049145256" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#3572A5" stroke-width="16" stroke-dasharray="110.88473531754735 165.5754181983544" stroke-dashoffset="0" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#DA5B0B" stroke-width="16" stroke-dasharray="77.50631915571792 198.95383436018386" stroke-dashoffset="-110.88473531754735" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#355570" stroke-width="16" stroke-dasharray="34.79727396291735 241.6628795529844" stroke-dashoffset="-188.39105447326529" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#e34c26" stroke-width="16" stroke-dasharray="16.28396598927232 260.17618752662946" stroke-dashoffset="-223.18832843618264" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#f1e05a" stroke-width="16" stroke-dasharray="14.062910637206764 262.397242878695" stroke-dashoffset="-239.47229442545498" transform="rotate(-90 72 108)"/>
+<circle cx="72" cy="108" r="44" fill="none" stroke="#8b949e" stroke-width="16" stroke-dasharray="12.1151952044018 264.34495831149997" stroke-dashoffset="-253.53520506266173" transform="rotate(-90 72 108)"/>
 <rect x="140" y="54" width="10" height="10" rx="2" fill="#3572A5"/>
 <text class="l" x="156" y="62">Python</text>
-<text class="p" x="364" y="62" text-anchor="end">39.88%</text>
+<text class="p" x="364" y="62" text-anchor="end">40.11%</text>
 <rect x="140" y="74" width="10" height="10" rx="2" fill="#DA5B0B"/>
 <text class="l" x="156" y="82">Jupyter Notebook</text>
-<text class="p" x="364" y="82" text-anchor="end">28.17%</text>
+<text class="p" x="364" y="82" text-anchor="end">28.04%</text>
 <rect x="140" y="94" width="10" height="10" rx="2" fill="#355570"/>
 <text class="l" x="156" y="102">GDScript</text>
-<text class="p" x="364" y="102" text-anchor="end">12.65%</text>
+<text class="p" x="364" y="102" text-anchor="end">12.59%</text>
 <rect x="140" y="114" width="10" height="10" rx="2" fill="#e34c26"/>
 <text class="l" x="156" y="122">HTML</text>
-<text class="p" x="364" y="122" text-anchor="end">5.92%</text>
+<text class="p" x="364" y="122" text-anchor="end">5.89%</text>
 <rect x="140" y="134" width="10" height="10" rx="2" fill="#f1e05a"/>
 <text class="l" x="156" y="142">JavaScript</text>
-<text class="p" x="364" y="142" text-anchor="end">5.06%</text>
+<text class="p" x="364" y="142" text-anchor="end">5.09%</text>
 <rect x="140" y="154" width="10" height="10" rx="2" fill="#8b949e"/>
 <text class="l" x="156" y="162">TeX</text>
-<text class="p" x="364" y="162" text-anchor="end">4.40%</text>
+<text class="p" x="364" y="162" text-anchor="end">4.38%</text>
 </svg>
