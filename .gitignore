@@ -1,0 +1,12 @@
+# Local-only backups and tooling that is not published to the profile repo.
+# The stats cards were retired because the 3D contribution calendar already
+# carries the same information. Keep the sources locally for reference only.
+_local-backup/
+
+# Retired profile stats generator (local backup lives in _local-backup/stats/)
+generate-lang-stats.js
+offline-cards.js
+assets/stats-token.svg
+assets/rank.svg
+assets/top-langs.svg
+.github/workflows/generate-stats.yml
