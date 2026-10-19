@@ -1,4 +1,4 @@
-name: GitHub-Profile-3D-Contrib
+﻿name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
@@ -22,13 +22,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Generate default 3D contributions
-        uses: 22ABLE22/github-profile-3d-contrib@main
+        uses: 22ABLE22/github-3d-contrib@main
         env:
           GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
           USERNAME: ${{ github.repository_owner }}
 
       - name: Generate custom dual-theme 3D contributions
-        uses: 22ABLE22/github-profile-3d-contrib@main
+        uses: 22ABLE22/github-3d-contrib@main
         env:
           GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
           USERNAME: ${{ github.repository_owner }}
