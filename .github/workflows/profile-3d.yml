@@ -1,4 +1,4 @@
-﻿name: GitHub-Profile-3D-Contrib
+name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
@@ -36,13 +36,7 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate default 3D contributions
-        env:
-          GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
-          USERNAME: ${{ github.repository_owner }}
-        run: node .3d-generator/dist/index.js
-
-      - name: Generate custom dual-theme 3D contributions
+      - name: Generate dual-theme 3D contributions
         env:
           GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
           USERNAME: ${{ github.repository_owner }}
@@ -58,17 +52,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [ -f profile-3d-contrib/profile-season-animate.svg ]; then
+          # Only the dual-theme calendar is generated now; drop the stale
+          # one-off variants that earlier runs used to leave behind.
+          if [ -f profile-3d-contrib/profile-season-dual.svg ]; then
             TS=$(date -u +%Y%m%d%H%M)
-            # bust raw.githubusercontent cache for the 3D contribution image
-            sed -i -E "s#(profile-3d-contrib/profile-season-animate\.svg)(\?[^\"]*)?#\1?v=${TS}#g" README.md
-            # if README has no query yet, append one
-            if ! grep -q 'profile-season-animate\.svg?v=' README.md; then
-              sed -i -E "s#(profile-3d-contrib/profile-season-animate\.svg)(\")#\1?v=${TS}\2#g" README.md
+            sed -i -E "s#(profile-3d-contrib/profile-season-dual\.svg)(\?[^\"]*)?#\1?v=${TS}#g" README.md
+            if ! grep -q 'profile-season-dual\.svg?v=' README.md; then
+              sed -i -E "s#(profile-3d-contrib/profile-season-dual\.svg)(\")#\1?v=${TS}\2#g" README.md
             fi
           fi
 
-          git add profile-3d-contrib README.md || true
+          # Prune variants this project no longer renders.
+          find profile-3d-contrib -type f ! -name 'profile-season-dual.svg' -delete 2>/dev/null || true
+
+          git add -A profile-3d-contrib README.md || true
           if git diff --cached --quiet; then
             echo "No 3D contrib changes"
             exit 0
