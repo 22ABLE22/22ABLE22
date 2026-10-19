@@ -1,4 +1,4 @@
-name: GitHub-Profile-3D-Contrib
+﻿name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 22ABLE22/github-3d-contrib
-          token: ${{ secrets.SNAKE_PAT }}
+          token: ${{ secrets.STATS_PAT }}
           path: .3d-generator
 
       - name: Setup Node
@@ -38,13 +38,13 @@ jobs:
 
       - name: Generate default 3D contributions
         env:
-          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
+          GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
           USERNAME: ${{ github.repository_owner }}
         run: node .3d-generator/dist/index.js
 
       - name: Generate custom dual-theme 3D contributions
         env:
-          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
+          GITHUB_TOKEN: ${{ secrets.STATS_PAT }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: conf/github-profile-3d-contrib.json
         run: node .3d-generator/dist/index.js
