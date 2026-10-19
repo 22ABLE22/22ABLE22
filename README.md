@@ -4,11 +4,9 @@
 
 ## 🌟 My GitHub
 
-<div align="center">
-  <img height="165" src="./assets/stats-token.svg?v=202610191400" alt="22ABLE22's GitHub Stats" />
-  <img height="165" src="./assets/rank.svg?v=202610191400" alt="Rank" />
-  <img height="165" src="./assets/top-langs.svg?v=202610191400" alt="Most Used Languages" />
-</div>
+<p align="center">
+  <img alt="3D contribution calendar" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/profile-3d-contrib/profile-season-animate.svg?v=202610191400" width="100%">
+</p>
 
 ## 💬 About Me
 
@@ -35,9 +33,5 @@
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610191400">
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610191400" width="100%">
   </picture>
-</p>
-
-<p align="center">
-  <img alt="3D contribution calendar" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/profile-3d-contrib/profile-season-animate.svg?v=202610191400" width="100%">
 </p>
 
