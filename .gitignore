@@ -1,2 +1,5 @@
 # Local-only backups, kept out of the published profile repo.
 _local-backup/
+
+# Retired profile stats generator, kept locally for reference only.
+.github/workflows/generate-stats.yml
