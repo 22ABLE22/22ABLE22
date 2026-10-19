@@ -1,0 +1,49 @@
+name: GitHub-Profile-3D-Contrib
+
+on:
+  schedule:
+    # daily at 03:20 UTC (≈11:20 UTC+8)
+    - cron: "20 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/profile-3d.yml"
+      - "conf/github-profile-3d-contrib.json"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate default 3D contributions
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate custom dual-theme 3D contributions
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: conf/github-profile-3d-contrib.json
+
+      - name: Commit 3D contrib
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-3d-contrib || true
+          if git diff --cached --quiet; then
+            echo "No 3D contrib changes"
+            exit 0
+          fi
+          git commit -m "chore: auto-update 3D contribution calendar"
+          git pull --rebase origin main || true
+          git push origin main || true
