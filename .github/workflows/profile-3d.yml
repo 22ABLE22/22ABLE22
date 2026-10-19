@@ -39,7 +39,18 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-3d-contrib || true
+
+          if [ -f profile-3d-contrib/profile-season-animate.svg ]; then
+            TS=$(date -u +%Y%m%d%H%M)
+            # bust raw.githubusercontent cache for the 3D contribution image
+            sed -i -E "s#(profile-3d-contrib/profile-season-animate\.svg)(\?[^\"]*)?#\1?v=${TS}#g" README.md
+            # if README has no query yet, append one
+            if ! grep -q 'profile-season-animate\.svg?v=' README.md; then
+              sed -i -E "s#(profile-3d-contrib/profile-season-animate\.svg)(\")#\1?v=${TS}\2#g" README.md
+            fi
+          fi
+
+          git add profile-3d-contrib README.md || true
           if git diff --cached --quiet; then
             echo "No 3D contrib changes"
             exit 0
