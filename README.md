@@ -12,8 +12,8 @@
 
 ## 💬 About Me
 
-- ☯ From China
-- 📖 Deep Learning / Remote Sensing Image Fusion / Brain-inspired Intelligence
+- 🧠 Deep Learning / Remote Sensing Image Fusion
+- ⚡ Brain-inspired Intelligence / Mental Agent
 
 ## 🧰 Languages & Tools
 
@@ -36,3 +36,4 @@
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/github-contribution-grid-snake.svg?v=202610190714" width="100%">
   </picture>
 </p>
+
