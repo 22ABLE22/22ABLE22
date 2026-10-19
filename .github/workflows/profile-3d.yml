@@ -1,4 +1,4 @@
-﻿name: GitHub-Profile-3D-Contrib
+name: GitHub-Profile-3D-Contrib
 
 on:
   schedule:
@@ -19,20 +19,38 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout profile repo
+        uses: actions/checkout@v4
+
+      # GitHub cannot reference a private action repository via `uses:`, so the
+      # generator is checked out into a sibling directory and executed with node.
+      - name: Checkout 3D contrib generator
+        uses: actions/checkout@v4
+        with:
+          repository: 22ABLE22/github-3d-contrib
+          token: ${{ secrets.SNAKE_PAT }}
+          path: .3d-generator
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: Generate default 3D contributions
-        uses: 22ABLE22/github-3d-contrib@main
         env:
           GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
           USERNAME: ${{ github.repository_owner }}
+        run: node .3d-generator/dist/index.js
 
       - name: Generate custom dual-theme 3D contributions
-        uses: 22ABLE22/github-3d-contrib@main
         env:
           GITHUB_TOKEN: ${{ secrets.SNAKE_PAT }}
           USERNAME: ${{ github.repository_owner }}
           SETTING_JSON: conf/github-profile-3d-contrib.json
+        run: node .3d-generator/dist/index.js
+
+      - name: Remove generator checkout
+        run: rm -rf .3d-generator
 
       - name: Commit 3D contrib
         run: |
