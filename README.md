@@ -5,7 +5,7 @@
 ## 🌟 My GitHub
 
 <p align="center">
-  <img alt="3D contribution calendar" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/profile-season-dual.svg?v=202610191616" width="100%">
+  <img alt="3D contribution calendar" src="https://raw.githubusercontent.com/22ABLE22/22ABLE22/main/assets/profile-season-dual.svg?v=202610200839" width="100%">
 </p>
 
 ## 💬 About Me
